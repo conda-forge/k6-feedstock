@@ -1,5 +1,5 @@
 {% set goname = "github.com/grafana/k6" %}
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 {% set name = goname.split('/')[-1] %}
 
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://{{ goname }}/archive/v{{ version }}.tar.gz
-  sha256: 790e8a1d1171262095edbd5df5a74f18406d11ea88098560d0f18b7614c8b880
+  sha256: b0c4b6a8a015387cef962a105e4ce3069e77376df118f25376af89b37c023f2e
 
 build:
   script:

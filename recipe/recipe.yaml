@@ -17,7 +17,7 @@ build:
   number: 0
   script:
     - cd src
-    - go-licenses save . --save_path ../library_licenses --ignore go.k6.io/k6/v2 --ignore golang.org/x/sys/unix --ignore github.com/cespare/xxhash/v2 --ignore github.com/klauspost/compress/zstd --ignore github.com/klauspost/compress/huff0 --ignore github.com/klauspost/compress/zstd/internal/xxhash --ignore github.com/klauspost/compress/s2 --ignore github.com/grafana/sobek/ftoa --ignore github.com/grafana/k6provider --ignore github.com/grafana/xk6-dashboard-assets --ignore go.k6.io/k6/v2/internal/dashboard --ignore buf.build/gen/go/prometheus/prometheus/protocolbuffers/go
+    - go-licenses save . --save_path ../library_licenses --ignore go.k6.io/k6/v2 --ignore golang.org/x/sys/unix --ignore github.com/cespare/xxhash/v2 --ignore github.com/klauspost/compress/zstd --ignore github.com/klauspost/compress/huff0 --ignore github.com/klauspost/compress/zstd/internal/xxhash --ignore github.com/klauspost/compress/s2 --ignore github.com/grafana/sobek/ftoa --ignore github.com/grafana/k6provider --ignore github.com/grafana/xk6-dashboard-assets --ignore go.k6.io/k6/v2/internal/dashboard --ignore buf.build/gen/go/prometheus/prometheus/protocolbuffers/go --ignore github.com/inconshreveable/mousetrap
     - if: unix
       then: go build -v -o $PREFIX/bin/k6 -trimpath -ldflags="-X go.k6.io/k6/v2/internal/build.BuildOrigin=release"
       else: go build -v -o %LIBRARY_BIN%\k6.exe -trimpath -ldflags="-X go.k6.io/k6/v2/internal/build.BuildOrigin=release"

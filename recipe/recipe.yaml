@@ -1,42 +1,45 @@
-{% set goname = "github.com/grafana/k6" %}
-{% set version = "1.2.3" %}
+schema_version: 1
 
-{% set name = goname.split('/')[-1] %}
+context:
+  goname: github.com/grafana/k6
+  version: "1.2.3"
+  name: ${{ goname.split('/')[-1] }}
 
 package:
-  name: {{ name }}
-  version: {{ version }}
+  name: ${{ name }}
+  version: ${{ version }}
 
 source:
-  url: https://{{ goname }}/archive/v{{ version }}.tar.gz
+  url: https://${{ goname }}/archive/v${{ version }}.tar.gz
   sha256: f89052128ccf12252fb6d58bb236e348c7f7f9afec80ca73323848a6f6af7ef2
 
 build:
+  number: 1
   script:
-    - go build -trimpath -ldflags "-s -w" -o $PREFIX/bin/  # [unix]
-    - go build -trimpath -ldflags "-s -w" -o %LIBRARY_BIN%/  # [win]
+    - if: unix
+      then: go build -trimpath -ldflags "-s -w" -o $PREFIX/bin/
+    - if: win
+      then: go build -trimpath -ldflags "-s -w" -o %LIBRARY_BIN%/
     - go-licenses save . --save_path="./license-files/" --ignore go.k6.io/k6 --ignore github.com/grafana --ignore buf.build/gen/go
-  number: 0
 
 requirements:
   build:
-    - {{ compiler('go-nocgo') }}
+    - ${{ compiler('go-nocgo') }}
     - go-licenses
 
-test:
-  commands:
-    - {{ name }} version
+tests:
+  - script:
+      - ${{ name }} version
 
 about:
-  home: https://{{ goname }}
-  summary: 'A modern load testing tool, using Go and JavaScript'
+  summary: A modern load testing tool, using Go and JavaScript
   description: |
     k6 is a modern load-testing tool, built on our years of experience in the performance and testing industries. It's built to be powerful, extensible, and full-featured. The key design goal is to provide the best developer experience.
   license: AGPL-3.0-only
-  license_family: AGPL
   license_file:
     - LICENSE.md
     - license-files/
+  homepage: https://${{ goname }}
 
 extra:
   recipe-maintainers:

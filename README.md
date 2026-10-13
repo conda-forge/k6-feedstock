@@ -3,14 +3,20 @@ About k6-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/k6-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/grafana/k6
+Home: https://grafana.com/oss/k6/
 
 Package license: AGPL-3.0-only
 
 Summary: A modern load testing tool, using Go and JavaScript
 
-k6 is a modern load-testing tool, built on our years of experience in the performance and testing industries. It's built to be powerful, extensible, and full-featured. The key design goal is to provide the best developer experience.
+Development: https://github.com/grafana/k6
 
+Documentation: https://grafana.com/docs/k6/latest/
+
+k6 is a modern load-testing tool, built on our years of experience in the
+performance and testing industries. It's built to be powerful, extensible,
+and full-featured. The key design goal is to provide the best developer
+experience.
 
 Current build status
 ====================
